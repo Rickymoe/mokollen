@@ -128,17 +128,46 @@ a { color: var(--blue); }
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: 16px;
+    right: 16px;
+    margin-top: 10px;
     background: #fff;
+    border-radius: 12px;
     flex-direction: column;
     gap: 0;
-    box-shadow: 0 4px 16px rgba(0,59,92,0.15);
+    box-shadow: 0 8px 24px rgba(0,59,92,0.2);
+    overflow: hidden;
   }
   .nav-links.open { display: flex; }
-  .nav-links li { border-bottom: 1px solid var(--cream-alt); }
-  .nav-links a { display: block; padding: 14px 24px; }
+  .nav-links li { border-bottom: 1px solid #F0EBE0; }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .nav-mobile-icon { display: flex; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-links.open a { animation: navMenuIn 0.3s ease forwards; }
+    .nav-links.open li:nth-child(1) a { animation-delay: 0.03s; }
+    .nav-links.open li:nth-child(2) a { animation-delay: 0.08s; }
+    .nav-links.open li:nth-child(3) a { animation-delay: 0.13s; }
+    .nav-links.open li:nth-child(4) a { animation-delay: 0.18s; }
+    .nav-links.open li:nth-child(5) a { animation-delay: 0.23s; }
+    .nav-links.open li:nth-child(6) a { animation-delay: 0.28s; }
+    @keyframes navMenuIn { to { opacity: 1; transform: translateY(0); } }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-links a { opacity: 1; transform: none; }
+  }
 }
+
+.nav-mobile-icon { display: none; }
 
 /* --- Dropdown (used on Forside + wherever a submenu is needed) --- */
 .nav-dropdown-panel {
