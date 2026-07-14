@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initNav();
   initReveal();
   initLightbox();
+  initTestimonialCarousel();
 });
 
 async function loadPartial(url, targetId) {
@@ -98,4 +99,62 @@ function initLightbox() {
       if (e.key === 'ArrowRight') show(current + 1);
     });
   });
+}
+
+function initTestimonialCarousel() {
+  const carousel = document.getElementById('testimonial-carousel');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.testimonial-slide');
+  const dotsWrap = carousel.querySelector('.testimonial-dots');
+  const liveRegion = carousel.querySelector('.sr-only');
+  let current = 0;
+  let timer = null;
+  const AUTOPLAY_MS = 6000;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Vis tilbakemelding ' + (i + 1) + ' av ' + slides.length);
+    dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+    dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll('button');
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].setAttribute('aria-current', 'false');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].setAttribute('aria-current', 'true');
+    liveRegion.textContent = slides[current].querySelector('.testimonial-name').textContent + ': ' + slides[current].querySelector('.testimonial-quote').textContent;
+  }
+
+  function next() { goTo(current + 1); }
+  function startTimer() { if (!reduceMotion) timer = setInterval(next, AUTOPLAY_MS); }
+  function stopTimer() { clearInterval(timer); }
+  function resetTimer() { stopTimer(); startTimer(); }
+
+  carousel.addEventListener('mouseenter', stopTimer);
+  carousel.addEventListener('mouseleave', startTimer);
+  carousel.addEventListener('focusin', stopTimer);
+  carousel.addEventListener('focusout', startTimer);
+
+  carousel.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { next(); resetTimer(); }
+    if (e.key === 'ArrowLeft') { goTo(current - 1); resetTimer(); }
+  });
+
+  let touchStartX = null;
+  carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : goTo(current - 1); resetTimer(); }
+    touchStartX = null;
+  }, { passive: true });
+
+  startTimer();
 }
