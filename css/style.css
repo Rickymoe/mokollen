@@ -775,7 +775,7 @@ h2[id] { scroll-margin-top: 84px; }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr auto;
   gap: 32px;
   margin-bottom: 24px;
 }
