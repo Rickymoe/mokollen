@@ -382,3 +382,22 @@ a { color: var(--blue); }
   }
   .reveal.visible { opacity: 1; }
 }
+
+/* --- Gallery thumbnails --- */
+.gallery-thumb {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-thumb img {
+  display: block;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .gallery-thumb img {
+    transition: transform 0.3s ease;
+  }
+  .gallery-thumb:hover img {
+    transform: scale(1.08);
+  }
+}
