@@ -717,7 +717,7 @@ h2[id] { scroll-margin-top: 84px; }
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background: #C9A66B;
+  object-fit: cover;
   margin: 0 auto 20px;
   border: 3px solid var(--gold);
 }
