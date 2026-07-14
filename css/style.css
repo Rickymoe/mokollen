@@ -411,7 +411,7 @@ a { color: var(--blue); }
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(20, 35, 43, 0.92);
+  background: rgba(20, 35, 43, 0.7);
   align-items: center;
   justify-content: center;
   padding: 56px;
