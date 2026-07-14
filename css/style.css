@@ -213,7 +213,7 @@ a { color: var(--blue); }
   display: inline-block;
   color: #fff;
   font-size: 16px;
-  margin: 0 0 20px;
+  margin: 0;
   padding: 6px 12px;
   background: rgba(0,59,92,0.4);
   border-radius: 4px;
@@ -353,7 +353,7 @@ a { color: var(--blue); }
   .hero { min-height: 260px; }
   .hero-scrim { padding: 18px 20px 22px; }
   .hero h1 { font-size: 24px; margin-bottom: 8px; }
-  .hero p { font-size: 14px; margin-bottom: 14px; }
+  .hero p { font-size: 14px; }
 }
 
 /* --- Reveal-on-scroll --- */
