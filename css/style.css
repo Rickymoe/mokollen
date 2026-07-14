@@ -705,18 +705,6 @@ h2[id] { scroll-margin-top: 84px; }
 .final-cta p { font-size: 15px; color: var(--text-muted); margin: 0 0 20px; }
 
 /* --- Staff page --- */
-.staff-watermark {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  max-width: none;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.6;
-}
-
 .staff-group {
   padding: 40px 0;
   border-bottom: 1px solid var(--border);
@@ -789,10 +777,6 @@ h2[id] { scroll-margin-top: 84px; }
 
 .sign-off { text-align: center; padding: 40px 0 8px; position: relative; z-index: 1; }
 .sign-off img { margin: 0 auto; opacity: 0.5; }
-
-@media (max-width: 640px) {
-  .staff-watermark { width: 340px; top: 10px; }
-}
 
 /* --- Testimonial carousel --- */
 .testimonial-carousel {
