@@ -122,6 +122,8 @@ a { color: var(--blue); }
   margin: 4px 0;
 }
 
+.nav-dropdown-icon.nav-mobile-icon { display: none; }
+
 @media (max-width: 800px) {
   .nav-hamburger { display: block; }
   .nav-links {
@@ -166,8 +168,6 @@ a { color: var(--blue); }
     .nav-links a { opacity: 1; transform: none; }
   }
 }
-
-.nav-dropdown-icon.nav-mobile-icon { display: none; }
 
 /* --- Dropdown (used on Forside + wherever a submenu is needed) --- */
 .nav-dropdown-panel {
