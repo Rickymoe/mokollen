@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ]);
   initNav();
   initReveal();
+  initLightbox();
 });
 
 async function loadPartial(url, targetId) {
@@ -46,4 +47,55 @@ function initReveal() {
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+function initLightbox() {
+  document.querySelectorAll('[data-lightbox-group]').forEach(group => {
+    const imgs = Array.from(group.querySelectorAll('img'));
+    if (!imgs.length) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML =
+      '<button class="lightbox-close" aria-label="Lukk">&times;</button>' +
+      '<button class="lightbox-prev" aria-label="Forrige bilde">&#10094;</button>' +
+      '<img class="lightbox-image" src="" alt="">' +
+      '<button class="lightbox-next" aria-label="Neste bilde">&#10095;</button>';
+    document.body.appendChild(overlay);
+
+    const imageEl = overlay.querySelector('.lightbox-image');
+    let current = 0;
+
+    function show(index) {
+      current = (index + imgs.length) % imgs.length;
+      imageEl.src = imgs[current].src;
+      imageEl.alt = imgs[current].alt;
+    }
+    function open(index) {
+      show(index);
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    imgs.forEach((img, i) => {
+      img.classList.add('lightbox-trigger');
+      img.addEventListener('click', () => open(i));
+    });
+
+    overlay.querySelector('.lightbox-close').addEventListener('click', close);
+    overlay.querySelector('.lightbox-prev').addEventListener('click', () => show(current - 1));
+    overlay.querySelector('.lightbox-next').addEventListener('click', () => show(current + 1));
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  });
 }
