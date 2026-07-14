@@ -110,7 +110,7 @@ function initTestimonialCarousel() {
   const liveRegion = carousel.querySelector('.sr-only');
   let current = 0;
   let timer = null;
-  const AUTOPLAY_MS = 6000;
+  const AUTOPLAY_MS = 9000;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach((_, i) => {
