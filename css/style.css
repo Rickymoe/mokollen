@@ -124,7 +124,20 @@ a { color: var(--blue); }
 
 .nav-dropdown-icon.nav-mobile-icon { display: none; }
 
+.nav-adventist-badge {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-adventist-badge img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
 @media (max-width: 800px) {
+  .nav-adventist-badge { display: none; }
   .nav-hamburger { display: block; }
   .nav-links {
     display: none;
