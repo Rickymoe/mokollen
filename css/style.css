@@ -310,6 +310,89 @@ a { color: var(--blue); }
 .section.alt { background: var(--cream); }
 .section h2 { font-size: 26px; margin-bottom: 20px; }
 
+/* --- Zigzag image/text sections --- */
+.zigzag {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.zigzag.reverse { flex-direction: row-reverse; }
+
+.zigzag-copy { flex: 1; min-width: 280px; }
+
+.zigzag-photo {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.zigzag-photo img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .zigzag-photo img { transition: transform 0.5s ease; }
+  .zigzag-photo:hover img { transform: scale(1.06); }
+}
+
+@media (max-width: 700px) {
+  .zigzag, .zigzag.reverse { flex-direction: column; }
+}
+
+.pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+.pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.pill.gold { background: rgba(232,163,61,0.15); color: #B4761F; }
+.pill.blue { background: rgba(0,59,92,0.1); color: var(--blue); }
+
+/* --- Quote card --- */
+.quote-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.quote-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.quote-card blockquote {
+  margin: 0 0 8px;
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--blue);
+}
+
+.quote-card cite { font-size: 13px; color: var(--text-muted); font-style: normal; }
+
+.more-press { list-style: none; margin: 16px 0 0; padding: 0; }
+.more-press li { font-size: 13px; color: var(--text-muted); padding: 4px 0; }
+.more-press a { color: #B4761F; text-decoration: none; }
+.more-press a:hover { text-decoration: underline; }
+
 /* --- Footer --- */
 .footer {
   position: relative;
