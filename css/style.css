@@ -57,10 +57,29 @@ a { color: var(--blue); }
   align-items: center;
   gap: 8px;
   text-decoration: none;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.nav-logo-title {
   font-family: 'Noto Serif', serif;
   font-weight: 600;
   font-size: 18px;
-  color: var(--blue);
+}
+
+.nav-logo-mokollen { color: var(--blue); }
+.nav-logo-skole { color: #B4761F; }
+
+.nav-logo-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .nav-links {
