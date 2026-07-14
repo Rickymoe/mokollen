@@ -344,6 +344,11 @@ a { color: var(--blue); }
 
 @media (max-width: 700px) {
   .footer-grid { grid-template-columns: 1fr; }
+
+  .hero { min-height: 260px; }
+  .hero-scrim { padding: 18px 20px 22px; }
+  .hero h1 { font-size: 24px; margin-bottom: 8px; }
+  .hero p { font-size: 14px; margin-bottom: 14px; }
 }
 
 /* --- Reveal-on-scroll --- */
