@@ -704,6 +704,96 @@ h2[id] { scroll-margin-top: 84px; }
 .final-cta { text-align: center; padding: 8px 0 24px; }
 .final-cta p { font-size: 15px; color: var(--text-muted); margin: 0 0 20px; }
 
+/* --- Staff page --- */
+.staff-watermark {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  max-width: none;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.staff-group {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.staff-group:last-of-type { border-bottom: none; }
+.staff-group h2 { font-size: 22px; margin-bottom: 20px; }
+
+.spotlight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 24px 28px;
+  flex-wrap: wrap;
+}
+
+.spotlight-initials {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+  background: var(--blue);
+}
+
+.spotlight-name { font-size: 18px; font-weight: 600; margin: 0 0 2px; color: var(--blue); font-family: 'Noto Serif', serif; }
+.spotlight-role { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.staff-card { text-align: center; padding: 14px 8px; border-radius: 12px; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .staff-card { transition: transform 0.25s ease, background 0.25s ease; }
+  .staff-card:hover { transform: translateY(-4px); background: var(--cream); }
+}
+
+.staff-initials {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.staff-initials.tint-blue { background: rgba(0,59,92,0.1); color: var(--blue); }
+.staff-initials.tint-gold { background: rgba(232,163,61,0.18); color: #B4761F; }
+
+.staff-name { font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+.staff-role { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+.sign-off { text-align: center; padding: 40px 0 8px; position: relative; z-index: 1; }
+.sign-off img { margin: 0 auto; opacity: 0.5; }
+
+@media (max-width: 640px) {
+  .staff-watermark { width: 340px; top: 10px; }
+}
+
 /* --- Testimonial carousel --- */
 .testimonial-carousel {
   max-width: 440px;
