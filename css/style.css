@@ -210,9 +210,13 @@ a { color: var(--blue); }
 }
 
 .hero p {
+  display: inline-block;
   color: #fff;
   font-size: 16px;
   margin: 0 0 20px;
+  padding: 6px 12px;
+  background: rgba(0,59,92,0.4);
+  border-radius: 4px;
   text-shadow: 0 1px 8px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.7);
 }
 
