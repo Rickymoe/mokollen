@@ -412,14 +412,54 @@ a { color: var(--blue); }
   display: block;
 }
 
-/* For infographic-style images (solid-color background, meaningful text)
-   rather than photos -- cover crops most of the image's own padding away
-   at this box's wide aspect ratio, since it scales to match the box width
-   and lets the box's fixed height crop the rest. contain shows the whole
-   image instead; the container's background matches the image's own
-   background so the letterboxed edges read as one continuous panel. */
-.zigzag-photo.graphic { background: #003B5C; }
-.zigzag-photo.graphic img { object-fit: contain; }
+.value-pills {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  background: #003B5C;
+  border-radius: 12px;
+  padding: 32px 20px;
+}
+
+.v-pill {
+  position: relative;
+  display: inline-block;
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-size: 28px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  cursor: default;
+}
+
+.v-pill--gold  { color: #003B5C; background: #E8A33D; }
+.v-pill--white { color: #003B5C; background: #fff; }
+.v-pill--black { color: #E8A33D; background: #14171A; }
+
+.v-pill::after {
+  content: "";
+  position: absolute;
+  left: 36px;
+  bottom: 10px;
+  width: 0%;
+  height: 3px;
+  transition: width 0.3s ease;
+}
+
+.v-pill--gold::after  { background: #fff; }
+.v-pill--white::after { background: #E8A33D; }
+.v-pill--black::after { background: #fff; }
+
+.v-pill:hover::after {
+  width: calc(100% - 72px);
+}
+
+@media (max-width: 640px) {
+  .v-pill { font-size: 22px; padding: 12px 28px; }
+}
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .zigzag-photo img { transition: transform 0.5s ease; }
