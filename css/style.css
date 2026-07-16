@@ -412,6 +412,15 @@ a { color: var(--blue); }
   display: block;
 }
 
+/* For infographic-style images (solid-color background, meaningful text)
+   rather than photos -- cover crops most of the image's own padding away
+   at this box's wide aspect ratio, since it scales to match the box width
+   and lets the box's fixed height crop the rest. contain shows the whole
+   image instead; the container's background matches the image's own
+   background so the letterboxed edges read as one continuous panel. */
+.zigzag-photo.graphic { background: #003B5C; }
+.zigzag-photo.graphic img { object-fit: contain; }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .zigzag-photo img { transition: transform 0.5s ease; }
   .zigzag-photo:hover img { transform: scale(1.06); }
